@@ -21,3 +21,4 @@ def read_data(file_path, chunk_size=50000):
         db_name = create_db_name(file_path=file_path)
         create_db_and_insert_data(chunk, db_name=db_name,if_exists=if_exists)
         if_exists = "append"
+    return db_name

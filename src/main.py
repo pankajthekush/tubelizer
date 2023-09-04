@@ -41,7 +41,7 @@ class CSVViewerApp:
         if not file_path:
             return
         try:
-            read_data(file_path)
+            self.current_db = read_data(file_path)
             self.display_data()
         except ValueError as e:
             print(f"Error: {e}")

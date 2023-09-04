@@ -12,8 +12,8 @@ class CSVViewerApp:
 
         self.current_row = 0
         self.row_increment = 100
-
         self.db_listbox = tk.Listbox(self.root)
+        self.current_db  = None
         self.initUI()
 
     def initUI(self):
@@ -47,7 +47,7 @@ class CSVViewerApp:
             print(f"Error: {e}")
 
     def display_data(self):
-        subset = fetch_data_from_db(self.current_row, self.row_increment)
+        subset = fetch_data_from_db(self.current_row, self.row_increment,self.current_db)
         
         self.tree.delete(*self.tree.get_children())
         self.tree['columns'] = []
@@ -77,6 +77,7 @@ class CSVViewerApp:
     def on_connect(self):
         self.current_row = 0
         selected_db = self.db_listbox.get(tk.ACTIVE)
+        self.current_db = selected_db
         if selected_db:
             self.display_data()
 

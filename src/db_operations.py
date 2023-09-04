@@ -1,7 +1,7 @@
 import sqlite3
 import pandas as pd
 
-def create_db_and_insert_data(chunk, db_name="csv_data.db", if_exists="replace"):
+def create_db_and_insert_data(chunk, db_name, if_exists="replace"):
     conn = sqlite3.connect(db_name)
     chunk.to_sql("csv_table", conn, if_exists=if_exists, index=False)
     conn.commit()
